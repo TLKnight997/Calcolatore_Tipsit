@@ -1,6 +1,13 @@
+/**
+ * @fileoverview
+ * @description Questo softwere serve per la gestione degli atleti e delle gare in una competizione di atletica leggera
+ */
 import * as U from "./utils.js"
 import promptSync from 'prompt-sync'
 const Input = promptSync();
+/**
+ * @function main Funzione che esegue tutto il programma
+ */
 function main(){
     let scelta = 0;
     let nome = "";
@@ -19,11 +26,12 @@ do{
             for(let i = 0; i<scelta; i+=1 ){
                 a.push({cognome:Input("Cognome:"),pos:Number(Input("Posizione:")),punti:Number(Input("Punti:"))});
             }
-            console.log({nome:nome,classifica:a});
             U.NuovaGara({nome:nome,classifica:a});
             U.AggiornaClassifica();
             U.giocatori.forEach(x=>{U.AggiornaPunteggi(x)});
             scelta = 2;
+            a = [];
+            
         break;
         case 3:
             U.StampaGiocatori();
